@@ -14,7 +14,6 @@ LandingPage.getInitialProps = async (context) => {
     const { data } = await client.get("/api/users/currentuser");
     return data;
   } catch (error) {
-    // 401 is expected for unauthenticated users
     if (error.response?.status === 401) {
       return { currentUser: null };
     }
