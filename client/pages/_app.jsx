@@ -13,15 +13,23 @@ const AppComponent = ({ Component, pageProps, currentUser }) => {
 
 AppComponent.getInitialProps = async (appContext) => {
   const client = buildClient(appContext.ctx);
-  const { data } = await client.get("/api/users/currentuser");
 
-  let pageProps = {};
+  try {
+    const { data } = await client.get("/api/users/currentuser");
+    let pageProps = {};
 
-  if (appContext.Component.getInitialProps) {
-    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+    if (appContext.Component.getInitialProps) {
+      pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+    }
+
+    return { pageProps, ...data };
+  } catch (error) {
+    if (error.response?.status === 401) {
+      return { currentUser: null };
+    }
+    console.error("Error fetching current user:", error.message);
+    return { currentUser: null };
   }
-
-  return { pageProps, ...data };
 };
 
 export default AppComponent;
