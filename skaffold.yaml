@@ -32,3 +32,11 @@ build:
         manual:
           - src: 'tickets/**/*.ts'
             dest: /.
+    - image: traceofhumanity/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'orders/**/*.ts'
+            dest: /.
