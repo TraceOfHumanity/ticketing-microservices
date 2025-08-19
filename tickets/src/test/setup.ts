@@ -2,12 +2,14 @@ import jwt from "jsonwebtoken";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
 import { app } from "../app";
-import { beforeAll, beforeEach, afterAll } from "@jest/globals";
+import { beforeAll, beforeEach, afterAll, jest } from "@jest/globals";
 import request from "supertest";
 
 declare global {
   var signin: () => string[];
 }
+
+jest.mock("../nats-wrapper");
 
 let mongo: any;
 
