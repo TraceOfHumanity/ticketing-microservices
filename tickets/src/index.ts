@@ -12,11 +12,7 @@ const start = async () => {
   }
 
   try {
-    await natsWrapper.connect(
-      "ticketing",
-      "tickets-service",
-      "http://localhost:4222",
-    );
+    await natsWrapper.connect('ticketing', 'alsdkj', 'http://nats-srv:4222');
     await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDB");
   } catch (err) {
