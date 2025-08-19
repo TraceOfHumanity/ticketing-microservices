@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
-import { requireAuth, validateRequest } from "@thticketsms/common";
 import { body } from "express-validator";
+import { requireAuth, validateRequest } from "@thticketsms/common";
 import { Ticket } from "../models/tickets";
 import { TicketCreatedPublisher } from "../events/publishers/ticket-created-publisher";
 import { natsWrapper } from "../nats-wrapper";
