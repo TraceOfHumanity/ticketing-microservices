@@ -20,7 +20,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@thticketsms/common": "^0.1.1",
+    "@thticketsms/common": "^0.1.4",
     "cookie-session": "^2.1.0",
     "express": "^4.21.2",
     "express-async-errors": "^3.1.1",
